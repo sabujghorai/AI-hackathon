@@ -1,3 +1,0 @@
-Reminders :=> 
-http://localhost/Hackathon_Career_Mentor/Career_Mentor/login.php
-
