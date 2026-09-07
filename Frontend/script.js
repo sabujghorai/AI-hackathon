@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ---- PART 1: Handle Request Form Submission ----
     const form = document.getElementById("requestForm");
 
     if (form) {
