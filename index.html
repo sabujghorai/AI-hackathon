@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Railway Block Planner - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Railway Block Planner</h1>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="schedule.html">Block Schedule</a>
+            <a href="request.html">Add Request</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="banner">
+            <h2>Dashboard Overview</h2>
+            <p>Real-time status of railway maintenance & block availability</p>
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🛠️</div>
+                <h3>Pending Maintenance Requests</h3>
+                <p id="pendingCount">0</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🚦</div>
+                <h3>Blocks Available This Week</h3>
+                <p>8</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">✅</div>
+                <h3>Asset Uptime</h3>
+                <p>92%</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

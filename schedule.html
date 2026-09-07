@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Railway Block Planner - Schedule</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Railway Block Planner</h1>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="schedule.html">Block Schedule</a>
+            <a href="request.html">Add Request</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Weekly Block Schedule</h2>
+
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Department</th>
+                    <th>Section</th>
+                    <th>Block Time</th>
+                    <th>Priority</th>
+                                </tr>
+            </thead>
+            <tbody id="scheduleBody">
+                <tr>
+                    <td>Monday</td>
+                    <td>Engineering</td>
+                    <td>Sec A-12</td>
+                    <td>10:00 - 12:00</td>
+                    <td class="high">High</td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td>Signal & Telecom</td>
+                    <td>Sec B-05</td>
+                    <td>14:00 - 16:00</td>
+                    <td class="medium">Medium</td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td>Traction Distribution</td>
+                    <td>Sec C-09</td>
+                    <td>09:00 - 11:00</td>
+                    <td class="high">High</td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td>Engineering</td>
+                    <td>Sec A-07</td>
+                    <td>13:00 - 15:00</td>
+                    <td class="low">Low</td>
+                </tr>
+            </tbody>
+        </table>
+        </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
