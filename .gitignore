@@ -1,0 +1,10 @@
+# Python
+Backend/venv/
+__pycache__/
+*.pyc
+
+# Database
+Backend/block_planner.db
+
+# OS
+.DS_Store
