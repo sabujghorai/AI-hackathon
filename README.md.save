@@ -1,8 +1,0 @@
-# Railway Block Planner
-
-AI-powered automatic block planning system for Indian Railways — coordinates
-maintenance scheduling across Engineering, Signal & Telecom, and Traction
-Distribution departments.
-
-## Structure
-- Backend/ — FastAPI + SQLite bac
