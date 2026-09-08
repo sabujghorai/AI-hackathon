@@ -1,453 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Railway Block Planner</title>
-    <style>
-        :root {
-            --navy: #0b2540;
-            --navy-dark: #081a2e;
-            --accent: #ff8a00;
-            --high: #e53935;
-            --med: #f2a900;
-            --low: #2e7d32;
-            --bg: #f4f6f9;
-            --card: #ffffff;
-            --text: #1c2b3a;
-            --muted: #5a6b7b;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-        }
-
-        header {
-            background: var(--navy);
-            color: #fff;
-            padding: 16px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 1.3rem;
-            letter-spacing: .5px;
-        }
-
-        nav {
-            display: flex;
-            gap: 6px;
-        }
-
-        nav button {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, .3);
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: .9rem;
-            transition: .2s;
-        }
-
-        nav button:hover {
-            background: rgba(255, 255, 255, .12);
-        }
-
-        nav button.active {
-            background: var(--accent);
-            border-color: var(--accent);
-            font-weight: 600;
-        }
-
-        main {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 24px;
-        }
-
-        .view {
-            display: none;
-            animation: fade .25s ease;
-        }
-
-        .view.active {
-            display: block;
-        }
-
-        @keyframes fade {
-            from {
-                opacity: 0;
-                transform: translateY(6px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .banner {
-            background: linear-gradient(135deg, var(--navy), var(--navy-dark));
-            color: #fff;
-            padding: 24px;
-            border-radius: 10px;
-            margin-bottom: 24px;
-        }
-
-        .banner h2 {
-            margin: 0 0 6px;
-        }
-
-        .banner p {
-            margin: 0;
-            color: #cfd9e3;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 18px;
-        }
-
-        .card {
-            background: var(--card);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
-        }
-
-        .card-icon {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-        }
-
-        .card h3 {
-            margin: 0 0 10px;
-            font-size: .95rem;
-            color: var(--muted);
-            font-weight: 600;
-        }
-
-        .card p {
-            margin: 0;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--navy);
-        }
-
-        h2 {
-            color: var(--navy);
-        }
-
-        .request-form {
-            background: var(--card);
-            padding: 24px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            max-width: 520px;
-        }
-
-        .request-form label {
-            font-weight: 600;
-            font-size: .9rem;
-            color: var(--muted);
-        }
-
-        .request-form input,
-        .request-form select,
-        .request-form textarea {
-            padding: 10px;
-            border: 1px solid #d7dfe6;
-            border-radius: 6px;
-            font-size: .95rem;
-            font-family: inherit;
-        }
-
-        .request-form button {
-            background: var(--accent);
-            color: #fff;
-            border: none;
-            padding: 12px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: .95rem;
-            transition: .2s;
-        }
-
-        .request-form button:hover {
-            background: #e67a00;
-        }
-
-        .confirm-msg {
-            margin-top: 14px;
-            font-weight: 600;
-            color: var(--low);
-        }
-
-        .schedule-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--card);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
-        }
-
-        .schedule-table th,
-        .schedule-table td {
-            padding: 12px 14px;
-            text-align: left;
-            border-bottom: 1px solid #eef1f4;
-            font-size: .92rem;
-        }
-
-        .schedule-table th {
-            background: var(--navy);
-            color: #fff;
-            font-weight: 600;
-        }
-
-        .schedule-table tbody tr:hover {
-            background: #f8fafc;
-        }
-
-        td.high {
-            color: var(--high);
-            font-weight: 700;
-        }
-
-        td.medium {
-            color: var(--med);
-            font-weight: 700;
-        }
-
-        td.low {
-            color: var(--low);
-            font-weight: 700;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Railway Block Planner</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <header>
-        <h1>🚆 Railway Block Planner</h1>
-        <nav>
-            <button class="nav-btn active" data-view="dashboard">Dashboard</button>
-            <button class="nav-btn" data-view="schedule">Block Schedule</button>
-            <button class="nav-btn" data-view="request">Add Request</button>
-        </nav>
-    </header>
+<header>
+  <h1>🚆 Railway Block Planner</h1>
+  <nav>
+    <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+    <button class="nav-btn" data-view="schedule">Block Schedule</button>
+    <button class="nav-btn" data-view="request">Add Request</button>
+  </nav>
+</header>
 
-    <main>
+<main>
 
-        <!-- DASHBOARD VIEW -->
-        <section id="dashboard" class="view active">
-            <div class="banner">
-                <h2>Dashboard Overview</h2>
-                <p>Real-time status of railway maintenance &amp; block availability</p>
-            </div>
+  <section id="dashboard" class="view active">
+    <div class="banner">
+      <h2>Dashboard Overview</h2>
+      <p>Real-time status of railway maintenance &amp; block availability</p>
+    </div>
 
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-icon">🛠️</div>
-                    <h3>Pending Maintenance Requests</h3>
-                    <p id="pendingCount">0</p>
-                </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">🛠️</div>
+        <h3>Pending Maintenance Requests</h3>
+        <p id="pendingCount">0</p>
+      </div>
 
-                <div class="card">
-                    <div class="card-icon">🚦</div>
-                    <h3>Blocks Available This Week</h3>
-                    <p id="blocksAvailable">8</p>
-                </div>
+      <div class="card">
+        <div class="card-icon">🚦</div>
+        <h3>Blocks Available This Week</h3>
+        <p id="blocksAvailable">8</p>
+      </div>
 
-                <div class="card">
-                    <div class="card-icon">✅</div>
-                    <h3>Asset Uptime</h3>
-                    <p>92%</p>
-                </div>
-            </div>
-        </section>
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <h3>Asset Uptime</h3>
+        <p>92%</p>
+      </div>
+    </div>
+  </section>
 
-        <!-- SCHEDULE VIEW -->
-        <section id="schedule" class="view">
-            <h2>Weekly Block Schedule</h2>
+  <section id="schedule" class="view">
+    <h2>Weekly Block Schedule</h2>
 
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th>Day</th>
-                        <th>Department</th>
-                        <th>Section</th>
-                        <th>Block Time</th>
-                        <th>Priority</th>
-                    </tr>
-                </thead>
-                <tbody id="scheduleBody">
-                    <tr>
-                        <td>Monday</td>
-                        <td>Engineering</td>
-                        <td>Sec A-12</td>
-                        <td>10:00 - 12:00</td>
-                        <td class="high">High</td>
-                    </tr>
-                    <tr>
-                        <td>Tuesday</td>
-                        <td>Signal &amp; Telecom</td>
-                        <td>Sec B-05</td>
-                        <td>14:00 - 16:00</td>
-                        <td class="medium">Medium</td>
-                    </tr>
-                    <tr>
-                        <td>Wednesday</td>
-                        <td>Traction Distribution</td>
-                        <td>Sec C-09</td>
-                        <td>09:00 - 11:00</td>
-                        <td class="high">High</td>
-                    </tr>
-                    <tr>
-                        <td>Friday</td>
-                        <td>Engineering</td>
-                        <td>Sec A-07</td>
-                        <td>13:00 - 15:00</td>
-                        <td class="low">Low</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Department</th>
+          <th>Section</th>
+          <th>Block Time</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody id="scheduleBody">
+        <tr>
+          <td>Monday</td>
+          <td>Engineering</td>
+          <td>Sec A-12</td>
+          <td>10:00 - 12:00</td>
+          <td class="high">High</td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td>Signal &amp; Telecom</td>
+          <td>Sec B-05</td>
+          <td>14:00 - 16:00</td>
+          <td class="medium">Medium</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td>Traction Distribution</td>
+          <td>Sec C-09</td>
+          <td>09:00 - 11:00</td>
+          <td class="high">High</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>Engineering</td>
+          <td>Sec A-07</td>
+          <td>13:00 - 15:00</td>
+          <td class="low">Low</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
+  <section id="request" class="view">
+    <h2>Add Maintenance Request</h2>
 
+    <form class="request-form" id="requestForm">
+      <div>
+        <label for="department">Department</label>
+        <select id="department" required>
+          <option value="">-- Select --</option>
+          <option value="Engineering">Engineering</option>
+          <option value="Signal & Telecom">Signal & Telecom</option>
+          <option value="Traction Distribution">Traction Distribution</option>
+        </select>
+      </div>
 
-        <!-- REQUEST VIEW -->
-        <section id="request" class="view">
-            <h2>Add Maintenance Request</h2>
+      <div>
+        <label for="section">Section / Track ID</label>
+        <input type="text" id="section" placeholder="e.g. Sec A-12" required>
+      </div>
 
-            <form class="request-form" id="requestForm">
-                <div>
-                    <label for="department">Department</label>
-                    <select id="department" required>
-                        <option value="">-- Select --</option>
-                        <option value="Engineering">Engineering</option>
-                        <option value="Signal & Telecom">Signal & Telecom</option>
-                        <option value="Traction Distribution">Traction Distribution</option>
-                    </select>
-                </div>
+      <div>
+        <label for="issue">Issue Description</label>
+        <textarea id="issue" rows="3" placeholder="Describe the defect or maintenance need" required></textarea>
+      </div>
 
-                <div>
-                    <label for="section">Section / Track ID</label>
-                    <input type="text" id="section" placeholder="e.g. Sec A-12" required>
-                </div>
+      <div>
+        <label for="priority">Priority</label>
+        <select id="priority" required>
+          <option value="">-- Select --</option>
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+      </div>
 
-                <div>
-                    <label for="issue">Issue Description</label>
-                    <textarea id="issue" rows="3" placeholder="Describe the defect or maintenance need"
-                        required></textarea>
-                </div>
+      <button type="submit">Submit Request</button>
+    </form>
 
-                <div>
-                    <label for="priority">Priority</label>
-                    <select id="priority" required>
-                        <option value="">-- Select --</option>
-                        <option value="High">High</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Low">Low</option>
-                    </select>
-                </div>
+    <p id="confirmMsg" class="confirm-msg"></p>
+  </section>
 
-                <button type="submit">Submit Request</button>
-            </form>
+</main>
 
-            <p id="confirmMsg" class="confirm-msg"></p>
-        </section>
-
-    </main>
-
-    <script>
-        // ---- In-memory state ----
-        const state = {
-            requests: []   // {department, section, issue, priority}
-        };
-
-        // ---- Navigation between views ----
-        const navButtons = document.querySelectorAll('.nav-btn');
-        const views = document.querySelectorAll('.view');
-
-        navButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                navButtons.forEach(b => b.classList.remove('active'));
-                views.forEach(v => v.classList.remove('active'));
-
-                btn.classList.add('active');
-                document.getElementById(btn.dataset.view).classList.add('active');
-            });
-        });
-
-        // ---- Dashboard counters ----
-        function updateDashboard() {
-            document.getElementById('pendingCount').textContent = state.requests.length;
-        }
-
-        // ---- Request form handling ----
-        const requestForm = document.getElementById('requestForm');
-        const confirmMsg = document.getElementById('confirmMsg');
-        const scheduleBody = document.getElementById('scheduleBody');
-
-        const priorityClass = { High: 'high', Medium: 'medium', Low: 'low' };
-        const dayCycle = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-        requestForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const department = document.getElementById('department').value;
-            const section = document.getElementById('section').value.trim();
-            const issue = document.getElementById('issue').value.trim();
-            const priority = document.getElementById('priority').value;
-
-            if (!department || !section || !issue || !priority) return;
-
-            state.requests.push({ department, section, issue, priority });
-            updateDashboard();
-
-            // Add a placeholder row to the schedule so the new request is visible
-            const day = dayCycle[state.requests.length % dayCycle.length];
-            const row = document.createElement('tr');
-            row.innerHTML = `
-      <td>${day}</td>
-      <td>${department}</td>
-      <td>${section}</td>
-      <td>TBD</td>
-      <td class="${priorityClass[priority]}">${priority}</td>
-    `;
-            scheduleBody.appendChild(row);
-
-            confirmMsg.textContent = `Request for ${section} (${department}) submitted successfully.`;
-            requestForm.reset();
-
-            setTimeout(() => { confirmMsg.textContent = ''; }, 4000);
-        });
-
-        updateDashboard();
-    </script>
-
+<script src="script.js"></script>
 </body>
-
 </html>
